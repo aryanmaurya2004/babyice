@@ -44,7 +44,7 @@ export function FlavorDetails() {
           <div className={`${flavor.bg} rounded-[3rem] p-12 aspect-square flex items-center justify-center relative overflow-hidden animate-slide-up shadow-xl shadow-black/5 border border-white/50`}>
             <div className={`absolute inset-0 opacity-20 bg-gradient-to-br ${flavor.color}`} />
             <div className="relative z-10 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] hover:scale-110 transition-transform duration-500">
-              <img src={flavor.image} alt={flavor.name} className="w-full h-full object-cover rounded-full shadow-2xl border-8 border-white/50" />
+              <img src={flavor.image} alt={flavor.name} className="w-full h-full object-cover rounded-[2rem] shadow-2xl border-8 border-white/50" />
             </div>
             <div className="absolute top-10 left-10 w-32 h-32 bg-white/30 rounded-full blur-3xl" />
             <div className="absolute bottom-10 right-10 w-48 h-48 bg-white/20 rounded-full blur-3xl" />

@@ -35,7 +35,7 @@ export function CartSidebar() {
           ) : (
             items.map((item) => (
               <div key={item.flavor.id} className="group relative flex gap-4 items-center bg-white p-4 rounded-3xl shadow-sm border border-warm-pink/10 hover:shadow-md hover:border-warm-pink/30 transition-all duration-300">
-                <div className={`w-28 h-28 rounded-full ${item.flavor.bg} flex items-center justify-center shrink-0 overflow-hidden shadow-inner border-4 border-white`}>
+                <div className={`w-20 h-20 rounded-2xl ${item.flavor.bg} flex items-center justify-center shrink-0 overflow-hidden shadow-inner border-4 border-white`}>
                   <img src={item.flavor.image} alt={item.flavor.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <div className="flex-1 min-w-0">
