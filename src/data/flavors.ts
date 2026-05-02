@@ -7,6 +7,7 @@ export interface Flavor {
   color: string;
   bg: string;
   icon: string;
+  image: string;
   price: string;
   category: string;
 }
@@ -19,6 +20,7 @@ export const flavors: Flavor[] = [
     color: 'from-chocolate to-caramel',
     bg: 'bg-amber-50',
     icon: '🍫',
+    image: 'https://images.unsplash.com/photo-1563805042-7684c8a9e9cb?auto=format&fit=crop&q=80&w=800',
     price: '$4.99',
     category: 'Chocolate'
   },
@@ -29,6 +31,7 @@ export const flavors: Flavor[] = [
     color: 'from-strawberry to-warm-pink',
     bg: 'bg-pink-50',
     icon: '🍓',
+    image: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&q=80&w=800',
     price: '$4.99',
     category: 'Fruity'
   },
@@ -39,6 +42,7 @@ export const flavors: Flavor[] = [
     color: 'from-caramel to-lemon',
     bg: 'bg-yellow-50',
     icon: '🍦',
+    image: 'https://images.unsplash.com/photo-1570197571499-166b36435e9f?auto=format&fit=crop&q=80&w=800',
     price: '$4.49',
     category: 'Classic'
   },
@@ -49,6 +53,7 @@ export const flavors: Flavor[] = [
     color: 'from-mint to-pistachio',
     bg: 'bg-emerald-50',
     icon: '🌿',
+    image: 'https://images.unsplash.com/photo-1558500665-27f3174246db?auto=format&fit=crop&q=80&w=800',
     price: '$5.49',
     category: 'Chocolate'
   },
@@ -59,6 +64,7 @@ export const flavors: Flavor[] = [
     color: 'from-blueberry to-sky-light',
     bg: 'bg-blue-50',
     icon: '🫐',
+    image: 'https://images.unsplash.com/photo-1488477304112-4944851de03d?auto=format&fit=crop&q=80&w=800',
     price: '$5.49',
     category: 'Fruity'
   },
@@ -69,6 +75,7 @@ export const flavors: Flavor[] = [
     color: 'from-pistachio to-mint',
     bg: 'bg-green-50',
     icon: '🥜',
+    image: 'https://images.unsplash.com/photo-1505394033641-40c6ad1178d7?auto=format&fit=crop&q=80&w=800',
     price: '$5.99',
     category: 'Nutty'
   },
@@ -79,6 +86,7 @@ export const flavors: Flavor[] = [
     color: 'from-caramel to-peach',
     bg: 'bg-orange-50',
     icon: '🥭',
+    image: 'https://images.unsplash.com/photo-1501747315-124a0eaca060?auto=format&fit=crop&q=80&w=800',
     price: '$4.99',
     category: 'Fruity'
   },
@@ -89,6 +97,7 @@ export const flavors: Flavor[] = [
     color: 'from-caramel to-chocolate',
     bg: 'bg-amber-50',
     icon: '🧂',
+    image: 'https://images.unsplash.com/photo-1580915411954-282cb1b0d780?auto=format&fit=crop&q=80&w=800',
     price: '$5.49',
     category: 'Classic'
   },

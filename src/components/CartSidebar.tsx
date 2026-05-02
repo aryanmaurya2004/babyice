@@ -34,33 +34,35 @@ export function CartSidebar() {
             </div>
           ) : (
             items.map((item) => (
-              <div key={item.flavor.id} className="flex gap-4 items-center bg-cream/30 p-3 rounded-2xl border border-warm-pink/5">
-                <div className={`w-16 h-16 rounded-xl ${item.flavor.bg} flex items-center justify-center text-3xl shrink-0`}>
-                  {item.flavor.icon}
+              <div key={item.flavor.id} className="group relative flex gap-4 items-center bg-white p-4 rounded-3xl shadow-sm border border-warm-pink/10 hover:shadow-md hover:border-warm-pink/30 transition-all duration-300">
+                <div className={`w-20 h-20 rounded-full ${item.flavor.bg} flex items-center justify-center shrink-0 overflow-hidden shadow-inner border-4 border-white`}>
+                  <img src={item.flavor.image} alt={item.flavor.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="font-semibold text-chocolate truncate">{item.flavor.name}</h4>
-                  <div className="text-warm-pink font-medium">{item.flavor.price}</div>
+                  <h4 className="font-display font-bold text-chocolate truncate text-lg">{item.flavor.name}</h4>
+                  <div className="text-warm-pink font-semibold">{item.flavor.price}</div>
                   
-                  <div className="flex items-center gap-3 mt-2">
-                    <button
-                      onClick={() => updateQuantity(item.flavor.id, item.quantity - 1)}
-                      className="w-7 h-7 rounded-full bg-white shadow flex items-center justify-center text-chocolate hover:text-warm-pink hover:bg-warm-pink/5 transition-colors"
-                    >
-                      <Minus className="w-4 h-4" />
-                    </button>
-                    <span className="text-sm font-medium w-4 text-center">{item.quantity}</span>
-                    <button
-                      onClick={() => updateQuantity(item.flavor.id, item.quantity + 1)}
-                      className="w-7 h-7 rounded-full bg-white shadow flex items-center justify-center text-chocolate hover:text-warm-pink hover:bg-warm-pink/5 transition-colors"
-                    >
-                      <Plus className="w-4 h-4" />
-                    </button>
+                  <div className="flex items-center gap-3 mt-3">
+                    <div className="flex items-center gap-4 bg-cream/50 rounded-full p-1 border border-chocolate/5">
+                      <button
+                        onClick={() => updateQuantity(item.flavor.id, item.quantity - 1)}
+                        className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-chocolate hover:text-white hover:bg-warm-pink transition-colors"
+                      >
+                        <Minus className="w-4 h-4" />
+                      </button>
+                      <span className="text-sm font-bold w-4 text-center text-chocolate">{item.quantity}</span>
+                      <button
+                        onClick={() => updateQuantity(item.flavor.id, item.quantity + 1)}
+                        className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-chocolate hover:text-white hover:bg-warm-pink transition-colors"
+                      >
+                        <Plus className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <button
                   onClick={() => removeFromCart(item.flavor.id)}
-                  className="p-2 text-chocolate/40 hover:text-strawberry transition-colors"
+                  className="absolute top-4 right-4 p-2 text-chocolate/20 hover:text-strawberry hover:bg-strawberry/10 rounded-full transition-all"
                 >
                   <X className="w-5 h-5" />
                 </button>

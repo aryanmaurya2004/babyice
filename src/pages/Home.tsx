@@ -99,17 +99,17 @@ function Hero() {
 
           <div className="hidden lg:flex justify-center items-center relative">
             <div className="relative">
-              <div className="w-80 h-80 bg-white/10 rounded-full backdrop-blur-sm flex items-center justify-center animate-float">
-                <span className="text-[120px]">🍦</span>
+              <div className="w-80 h-80 bg-white/10 rounded-full backdrop-blur-sm flex items-center justify-center animate-float overflow-hidden border-8 border-white/20 shadow-2xl">
+                <img src={flavors[2].image} alt="Ice Cream" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute -top-8 -right-8 w-20 h-20 bg-lemon/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-bounce-gentle">
-                <span className="text-4xl">🍓</span>
+              <div className="absolute -top-8 -right-8 w-24 h-24 bg-lemon/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-bounce-gentle overflow-hidden border-4 border-white/30 shadow-xl">
+                <img src={flavors[1].image} alt="Strawberry" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute -bottom-4 -left-8 w-16 h-16 bg-mint/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-float-delay">
-                <span className="text-3xl">🍫</span>
+              <div className="absolute -bottom-4 -left-8 w-20 h-20 bg-mint/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-float-delay overflow-hidden border-4 border-white/30 shadow-xl">
+                <img src={flavors[0].image} alt="Chocolate" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute top-1/2 -right-16 w-14 h-14 bg-peach/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-float-slow">
-                <span className="text-2xl">🫐</span>
+              <div className="absolute top-1/2 -right-16 w-16 h-16 bg-peach/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-float-slow overflow-hidden border-4 border-white/30 shadow-lg">
+                <img src={flavors[4].image} alt="Blueberry" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -171,13 +171,13 @@ function Flavors() {
           {filteredFlavors.map((flavor, index) => (
             <Link
               to={`/flavor/${flavor.id}`}
-              key={flavor.name}
+              key={`${activeCategory}-${flavor.id}`}
               className={`group ${flavor.bg} rounded-3xl p-6 card-hover block border border-black/5 ${isVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'
                 }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {flavor.icon}
+              <div className="w-24 h-24 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 rounded-full overflow-hidden shadow-lg shadow-black/10 border-4 border-white/50">
+                <img src={flavor.image} alt={flavor.name} className="w-full h-full object-cover" />
               </div>
               <h3 className="font-display text-xl font-bold text-chocolate mb-2 group-hover:text-warm-pink transition-colors">
                 {flavor.name}
