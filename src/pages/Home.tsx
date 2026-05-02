@@ -176,7 +176,7 @@ function Flavors() {
                 }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-24 h-24 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 rounded-full overflow-hidden shadow-lg shadow-black/10 border-4 border-white/50">
+              <div className="w-40 h-40 mx-auto mb-6 group-hover:scale-110 transition-transform duration-500 rounded-full overflow-hidden shadow-xl shadow-black/10 border-4 border-white/60">
                 <img src={flavor.image} alt={flavor.name} className="w-full h-full object-cover" />
               </div>
               <h3 className="font-display text-xl font-bold text-chocolate mb-2 group-hover:text-warm-pink transition-colors">
