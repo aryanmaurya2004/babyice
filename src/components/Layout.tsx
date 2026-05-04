@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { IceCream2, Menu, X, ShoppingCart } from 'lucide-react';
+import { IceCream2, Menu, X, ShoppingCart, Phone } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { CartSidebar } from './CartSidebar';
 
@@ -10,6 +10,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main>{children}</main>
       <CartSidebar />
+      <FloatingCallButton />
       <Footer />
     </>
   );
@@ -217,5 +218,28 @@ function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function FloatingCallButton() {
+  return (
+    <a
+      href="tel:+918303319119"
+      className="fixed bottom-8 left-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl transition-all duration-500 hover:scale-110 hover:rotate-12 group translate-y-0 opacity-100"
+      aria-label="Call us"
+    >
+      <div className="relative">
+        <Phone className="w-6 h-6 fill-current" />
+        <span className="absolute -top-1 -right-1 flex h-3 w-3">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+        </span>
+      </div>
+      
+      {/* Tooltip */}
+      <span className="absolute left-16 top-1/2 -translate-y-1/2 bg-white text-chocolate px-4 py-2 rounded-xl text-sm font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-warm-pink/10">
+        Call Now: +91 8303319119
+      </span>
+    </a>
   );
 }
