@@ -1,4 +1,4 @@
-import { X, Plus, Minus, ShoppingBag } from 'lucide-react';
+import { X, Plus, Minus, ShoppingBag, MessageCircle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 export function CartSidebar() {
@@ -77,9 +77,19 @@ export function CartSidebar() {
               <span className="font-medium text-chocolate">Subtotal</span>
               <span className="font-bold text-xl text-chocolate">₹{cartTotal.toFixed(2)}</span>
             </div>
-            <button className="w-full bg-warm-pink text-white py-4 rounded-full font-semibold hover:bg-strawberry transition-colors shadow-lg shadow-warm-pink/25">
-              Proceed to Checkout
-            </button>
+            <a
+              href={`https://wa.me/918303319119?text=${encodeURIComponent(
+                `Hello! I want to order from Baby Ice Cream:\n\n${items
+                  .map((item) => `- ${item.flavor.name} x ${item.quantity} (${item.flavor.price})`)
+                  .join('\n')}\n\nTotal: ₹${cartTotal.toFixed(2)}\n\nPlease confirm my order!`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-[#25D366] text-white py-4 rounded-full font-semibold hover:bg-[#128C7E] transition-colors shadow-lg shadow-green-500/25 flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Order via WhatsApp
+            </a>
           </div>
         )}
       </div>

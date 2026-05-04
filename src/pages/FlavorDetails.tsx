@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Minus, Plus, ShoppingBag } from 'lucide-react';
+import { ArrowLeft, Minus, Plus, ShoppingBag, MessageCircle } from 'lucide-react';
 import { flavors } from '../data/flavors';
 import { useCart } from '../context/CartContext';
 
@@ -88,7 +88,7 @@ export function FlavorDetails() {
                 </div>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={handleAddToCart}
                   className="flex-1 bg-warm-pink text-white py-4 px-8 rounded-full font-bold text-lg hover:bg-strawberry transition-all duration-300 shadow-xl shadow-warm-pink/30 hover:shadow-2xl hover:shadow-warm-pink/40 hover:-translate-y-1 flex items-center justify-center gap-3"
@@ -96,6 +96,15 @@ export function FlavorDetails() {
                   <ShoppingBag className="w-6 h-6" />
                   Add to Cart
                 </button>
+                <a
+                  href={`https://wa.me/918303319119?text=Hello! I want to book ${quantity} scoop(s) of ${flavor.name} (${flavor.price}) from Baby Ice Cream.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 bg-[#25D366] text-white py-4 px-8 rounded-full font-bold text-lg hover:bg-[#128C7E] transition-all duration-300 shadow-xl shadow-green-500/30 hover:shadow-2xl hover:shadow-green-500/40 hover:-translate-y-1 flex items-center justify-center gap-3"
+                >
+                  <MessageCircle className="w-6 h-6" />
+                  Book via WhatsApp
+                </a>
               </div>
             </div>
             

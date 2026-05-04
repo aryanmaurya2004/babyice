@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ChevronDown, Star, MapPin, Phone, Mail, Clock, Heart, Sparkles } from 'lucide-react';
+import { ChevronDown, Star, MapPin, Phone, Mail, Clock, Heart, Sparkles, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { flavors, testimonials, features } from '../data/flavors';
 
@@ -203,34 +203,46 @@ function Flavors() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredFlavors.map((flavor, index) => (
-            <Link
-              to={`/flavor/${flavor.id}`}
+            <div
               key={`${activeCategory}-${flavor.id}`}
-              className={`group ${flavor.bg} rounded-3xl p-6 card-hover block border border-black/5 ${isVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'
+              className={`group ${flavor.bg} rounded-3xl p-6 card-hover block border border-black/5 relative ${isVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'
                 }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-full h-48 mb-6 overflow-hidden rounded-2xl shadow-md border-4 border-white/60 relative">
-                <img src={flavor.image} alt={flavor.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <Link to={`/flavor/${flavor.id}`}>
+                <div className="w-full h-48 mb-6 overflow-hidden rounded-2xl shadow-md border-4 border-white/60 relative">
+                  <img src={flavor.image} alt={flavor.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-chocolate mb-2 group-hover:text-warm-pink transition-colors">
+                  {flavor.name}
+                </h3>
+                <p className="text-chocolate/60 text-sm leading-relaxed mb-4">
+                  {flavor.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-warm-pink font-bold text-lg">
+                    {flavor.price}
+                  </span>
+                  <span className="text-xs text-chocolate/40 font-medium uppercase tracking-wider">
+                    Per Scoop
+                  </span>
+                </div>
+              </Link>
+              <div className="flex items-center gap-3 mt-4">
+                <div
+                  className={`flex-1 h-1 rounded-full bg-gradient-to-r ${flavor.color} opacity-60 group-hover:opacity-100 transition-opacity`}
+                />
+                <a
+                  href={`https://wa.me/918303319119?text=Hello! I want to book ${flavor.name} (${flavor.price}) from Baby Ice Cream.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-full text-xs font-bold hover:scale-105 transition-all shadow-md shadow-green-500/20"
+                >
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  Book Now
+                </a>
               </div>
-              <h3 className="font-display text-xl font-bold text-chocolate mb-2 group-hover:text-warm-pink transition-colors">
-                {flavor.name}
-              </h3>
-              <p className="text-chocolate/60 text-sm leading-relaxed mb-4">
-                {flavor.description}
-              </p>
-              <div className="flex items-center justify-between">
-                <span className="text-warm-pink font-bold text-lg">
-                  {flavor.price}
-                </span>
-                <span className="text-xs text-chocolate/40 font-medium uppercase tracking-wider">
-                  Per Scoop
-                </span>
-              </div>
-              <div
-                className={`mt-4 h-1 rounded-full bg-gradient-to-r ${flavor.color} opacity-60 group-hover:opacity-100 transition-opacity`}
-              />
-            </Link>
+            </div>
           ))}
         </div>
       </div>
