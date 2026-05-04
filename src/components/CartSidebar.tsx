@@ -41,7 +41,7 @@ export function CartSidebar() {
                 <div className="flex-1 min-w-0">
                   <h4 className="font-display font-bold text-chocolate truncate text-lg">{item.flavor.name}</h4>
                   <div className="text-warm-pink font-semibold">{item.flavor.price}</div>
-                  
+
                   <div className="flex items-center gap-3 mt-3">
                     <div className="flex items-center gap-4 bg-cream/50 rounded-full p-1 border border-chocolate/5">
                       <button
@@ -75,7 +75,7 @@ export function CartSidebar() {
           <div className="p-6 bg-cream border-t border-warm-pink/10">
             <div className="flex justify-between items-center mb-6">
               <span className="font-medium text-chocolate">Subtotal</span>
-              <span className="font-bold text-xl text-chocolate">${cartTotal.toFixed(2)}</span>
+              <span className="font-bold text-xl text-chocolate">₹{cartTotal.toFixed(2)}</span>
             </div>
             <button className="w-full bg-warm-pink text-white py-4 rounded-full font-semibold hover:bg-strawberry transition-colors shadow-lg shadow-warm-pink/25">
               Proceed to Checkout

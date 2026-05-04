@@ -17,108 +17,130 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const { itemCount, setIsCartOpen } = useCart();
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (isHomePage && href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setIsOpen(false);
+      }
+    }
+  };
 
-  const links = [
+  const linksLeft = [
     { label: 'Home', href: isHomePage ? '#home' : '/' },
     { label: 'Flavors', href: isHomePage ? '#flavors' : '/#flavors' },
     { label: 'About', href: isHomePage ? '#about' : '/#about' },
+  ];
+  
+  const linksRight = [
     { label: 'Reviews', href: isHomePage ? '#reviews' : '/#reviews' },
     { label: 'Contact', href: isHomePage ? '#contact' : '/#contact' },
   ];
 
-  // If not on homepage, nav starts with background
-  const navBgClass = (scrolled || !isHomePage)
-    ? 'bg-white/95 backdrop-blur-md shadow-lg shadow-warm-pink/5'
-    : 'bg-transparent';
-
-  const textColorClass = (scrolled || !isHomePage) ? 'text-chocolate' : 'text-white';
-  const logoIconClass = (scrolled || !isHomePage) ? 'text-warm-pink' : 'text-white';
-  const linkColorClass = (scrolled || !isHomePage) ? 'text-chocolate/70' : 'text-white/90';
-
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBgClass}`}>
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <IceCream2
-            className={`w-8 h-8 transition-colors duration-300 ${logoIconClass} group-hover:rotate-12 transition-transform`}
-          />
-          <span className={`font-display text-2xl font-bold transition-colors duration-300 ${textColorClass}`}>
-            babyice
-          </span>
-        </Link>
-
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={`text-sm font-medium transition-colors duration-300 hover:text-warm-pink ${linkColorClass}`}
-            >
-              {link.label}
-            </a>
-          ))}
+    <nav className="fixed top-8 md:top-10 left-0 right-0 z-50 px-4 md:px-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="relative bg-[#FFF8F0] rounded-full h-14 md:h-16 shadow-xl shadow-black/10 flex items-center justify-between px-6 md:px-12 border border-white/50">
           
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className={`relative p-2 transition-colors duration-300 hover:text-warm-pink ${textColorClass}`}
-          >
-            <ShoppingCart className="w-6 h-6" />
-            {itemCount > 0 && (
-              <span className="absolute top-0 right-0 w-5 h-5 bg-warm-pink text-white rounded-full text-xs font-bold flex items-center justify-center animate-bounce-gentle">
-                {itemCount}
-              </span>
-            )}
-          </button>
-        </div>
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex-1">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-[#002855]">
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
 
-        <div className="md:hidden flex items-center gap-4">
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className={`relative p-2 transition-colors duration-300 ${textColorClass}`}
-          >
-            <ShoppingCart className="w-6 h-6" />
-            {itemCount > 0 && (
-              <span className="absolute top-0 right-0 w-5 h-5 bg-warm-pink text-white rounded-full text-xs font-bold flex items-center justify-center">
-                {itemCount}
-              </span>
-            )}
-          </button>
-
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className={`transition-colors ${textColorClass}`}
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </div>
-
-      {isOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-warm-pink/10 animate-fade-in">
-          <div className="px-6 py-4 space-y-3">
-            {links.map((link) => (
+          {/* Left Links */}
+          <div className="hidden md:flex flex-1 justify-center gap-8 pr-16 lg:pr-24">
+            {linksLeft.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block text-chocolate/70 hover:text-warm-pink font-medium py-2 transition-colors"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-[#002855] font-display font-bold text-[15px] md:text-[17px] hover:text-warm-pink transition-colors"
               >
                 {link.label}
               </a>
             ))}
           </div>
+
+          {/* Center Logo */}
+          <Link to="/" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center group">
+            <div className="w-[100px] h-[100px] md:w-[130px] md:h-[130px] bg-[#FFF8F0] rounded-full flex items-center justify-center shadow-sm">
+              <div className="w-[85px] h-[85px] md:w-[110px] md:h-[110px] bg-white rounded-full flex flex-col items-center justify-center shadow-lg border border-warm-pink/10 relative group-hover:scale-105 transition-transform duration-300">
+                 <IceCream2 className="w-6 h-6 md:w-8 md:h-8 text-warm-pink fill-warm-pink/20 mb-0.5" />
+                 <span className="font-display font-bold text-chocolate text-[11px] md:text-[15px] tracking-wide">babyice</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Right Links */}
+          <div className="hidden md:flex flex-1 justify-center items-center gap-8 pl-16 lg:pl-24">
+            {linksRight.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-[#002855] font-display font-bold text-[15px] md:text-[17px] hover:text-warm-pink transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+            
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="relative text-[#002855] hover:text-warm-pink transition-colors"
+            >
+              <ShoppingCart className="w-5 h-5 md:w-6 md:h-6" />
+              {itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 w-5 h-5 bg-warm-pink text-white rounded-full text-xs font-bold flex items-center justify-center">
+                  {itemCount}
+                </span>
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Cart Button */}
+          <div className="md:hidden flex-1 flex justify-end">
+            <button onClick={() => setIsCartOpen(true)} className="relative text-[#002855]">
+              <ShoppingCart className="w-6 h-6" />
+              {itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 w-5 h-5 bg-warm-pink text-white rounded-full text-xs font-bold flex items-center justify-center">
+                  {itemCount}
+                </span>
+              )}
+            </button>
+          </div>
+
         </div>
-      )}
+
+        {/* Mobile Menu Dropdown */}
+        {isOpen && (
+          <div className="md:hidden mt-4 bg-[#FFF8F0] rounded-3xl p-6 shadow-xl border border-white/50 animate-fade-in relative z-40">
+            <div className="flex flex-col gap-4 text-center">
+              {[...linksLeft, ...linksRight].map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => {
+                    handleNavClick(e, link.href);
+                    setIsOpen(false);
+                  }}
+                  className="text-[#002855] font-display font-bold text-lg"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </nav>
   );
 }

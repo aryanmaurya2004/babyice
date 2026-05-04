@@ -37,6 +37,16 @@ export function Home() {
 }
 
 function Hero() {
+  const sliderImages = [flavors[2].image, flavors[0].image, flavors[7].image];
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section
       id="home"
@@ -50,8 +60,16 @@ function Hero() {
       <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-mint/15 rounded-full blur-3xl animate-float-slow" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full pt-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="text-white space-y-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center relative">
+          <div className="text-white space-y-8 relative z-10">
+            {/* Child eating ice cream image */}
+            <div className="hidden md:block absolute bottom-0 top-20 lg:-bottom-8 -left-12 lg:-left-56 w-52 h-80 lg:w-[300px] lg:h-[460px] rounded-[2.5rem] overflow-hidden border-[6px] border-white/20 shadow-2xl shadow-warm-pink/20 animate-float-slow z-[-1] transition-all duration-500 hover:scale-105 hover:-rotate-2 -rotate-6">
+              <img
+                src="https://i.pinimg.com/736x/d2/bd/ad/d2bdadd60ed5a5602a9250b17e7b90bf.jpg"
+                alt="Kid enjoying ice cream"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium animate-fade-in">
               <Sparkles className="w-4 h-4" />
               Handcrafted with Love Since 2018
@@ -99,16 +117,32 @@ function Hero() {
 
           <div className="hidden lg:flex justify-center items-center relative">
             <div className="relative">
-              <div className="w-80 h-80 bg-white/10 rounded-full backdrop-blur-sm flex items-center justify-center animate-float overflow-hidden border-8 border-white/20 shadow-2xl">
-                <img src={flavors[2].image} alt="Ice Cream" className="w-full h-full object-cover" />
+              <div className="w-[450px] h-[450px] bg-white/10 rounded-full backdrop-blur-sm flex items-center justify-center animate-float overflow-hidden border-8 border-white/20 shadow-2xl relative">
+                {sliderImages.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img}
+                    alt="Ice Cream"
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${currentSlide === idx ? 'opacity-100' : 'opacity-0'}`}
+                  />
+                ))}
               </div>
-              <div className="absolute -top-8 -right-8 w-24 h-24 bg-lemon/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-bounce-gentle overflow-hidden border-4 border-white/30 shadow-xl">
+              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
+                {sliderImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${currentSlide === idx ? 'bg-white scale-125 shadow-lg' : 'bg-white/50 hover:bg-white/80'}`}
+                  />
+                ))}
+              </div>
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-lemon/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-bounce-gentle overflow-hidden border-4 border-white/30 shadow-xl">
                 <img src={flavors[1].image} alt="Strawberry" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute -bottom-4 -left-8 w-20 h-20 bg-mint/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-float-delay overflow-hidden border-4 border-white/30 shadow-xl">
-                <img src={flavors[0].image} alt="Chocolate" className="w-full h-full object-cover" />
+              <div className="absolute -bottom-6 -left-10 w-28 h-28 bg-mint/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-float-delay overflow-hidden border-4 border-white/30 shadow-xl">
+                <img src={flavors[3].image} alt="Mint" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute top-1/2 -right-16 w-16 h-16 bg-peach/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-float-slow overflow-hidden border-4 border-white/30 shadow-lg">
+              <div className="absolute top-1/2 -right-20 w-24 h-24 bg-peach/30 rounded-full backdrop-blur-sm flex items-center justify-center animate-float-slow overflow-hidden border-4 border-white/30 shadow-lg">
                 <img src={flavors[4].image} alt="Blueberry" className="w-full h-full object-cover" />
               </div>
             </div>

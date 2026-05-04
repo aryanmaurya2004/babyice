@@ -20,8 +20,8 @@ export const flavors: Flavor[] = [
     color: 'from-chocolate to-caramel',
     bg: 'bg-amber-50',
     icon: '🍫',
-    image: 'https://images.unsplash.com/photo-1563805042-7684c8a9e9cb?auto=format&fit=crop&q=80&w=800',
-    price: '$4.99',
+    image: 'https://i.pinimg.com/736x/d6/d3/05/d6d305a813f2af9da9a81f395c0ec986.jpg',
+    price: '₹-250',
     category: 'Chocolate'
   },
   {
@@ -31,8 +31,8 @@ export const flavors: Flavor[] = [
     color: 'from-strawberry to-warm-pink',
     bg: 'bg-pink-50',
     icon: '🍓',
-    image: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&q=80&w=800',
-    price: '$4.99',
+    image: 'https://i.pinimg.com/736x/a0/56/69/a05669dbac3fd11cf7fde232ffeb7500.jpg',
+    price: '₹-390',
     category: 'Fruity'
   },
   {
@@ -42,8 +42,8 @@ export const flavors: Flavor[] = [
     color: 'from-caramel to-lemon',
     bg: 'bg-yellow-50',
     icon: '🍦',
-    image: 'https://images.unsplash.com/photo-1570197571499-166b36435e9f?auto=format&fit=crop&q=80&w=800',
-    price: '$4.49',
+    image: 'https://i1-c.pinimg.com/1200x/a5/7d/eb/a57deb96de2715d0125787e06bce0276.jpg',
+    price: '₹-360',
     category: 'Classic'
   },
   {
@@ -53,8 +53,8 @@ export const flavors: Flavor[] = [
     color: 'from-mint to-pistachio',
     bg: 'bg-emerald-50',
     icon: '🌿',
-    image: 'https://images.unsplash.com/photo-1558500665-27f3174246db?auto=format&fit=crop&q=80&w=800',
-    price: '$5.49',
+    image: 'https://i1-c.pinimg.com/1200x/5b/78/12/5b78127e600e0179317c0e0b149dd744.jpg',
+    price: '₹-320',
     category: 'Chocolate'
   },
   {
@@ -64,8 +64,8 @@ export const flavors: Flavor[] = [
     color: 'from-blueberry to-sky-light',
     bg: 'bg-blue-50',
     icon: '🫐',
-    image: 'https://images.unsplash.com/photo-1488477304112-4944851de03d?auto=format&fit=crop&q=80&w=800',
-    price: '$5.49',
+    image: 'https://i.pinimg.com/736x/9e/5d/0b/9e5d0b401c4429cd68403bec04c5e8f6.jpg',
+    price: '₹-299',
     category: 'Fruity'
   },
   {
@@ -75,8 +75,8 @@ export const flavors: Flavor[] = [
     color: 'from-pistachio to-mint',
     bg: 'bg-green-50',
     icon: '🥜',
-    image: 'https://images.unsplash.com/photo-1505394033641-40c6ad1178d7?auto=format&fit=crop&q=80&w=800',
-    price: '$5.99',
+    image: 'https://i1-c.pinimg.com/736x/9e/b6/28/9eb628e6e97d808f157a134414047059.jpg',
+    price: '₹-265',
     category: 'Nutty'
   },
   {
@@ -86,8 +86,8 @@ export const flavors: Flavor[] = [
     color: 'from-caramel to-peach',
     bg: 'bg-orange-50',
     icon: '🥭',
-    image: 'https://images.unsplash.com/photo-1501747315-124a0eaca060?auto=format&fit=crop&q=80&w=800',
-    price: '$4.99',
+    image: 'https://i1-c.pinimg.com/1200x/72/15/20/721520b483ea1881cfe9c77277f63d4f.jpg',
+    price: '₹-399',
     category: 'Fruity'
   },
   {
@@ -97,8 +97,8 @@ export const flavors: Flavor[] = [
     color: 'from-caramel to-chocolate',
     bg: 'bg-amber-50',
     icon: '🧂',
-    image: 'https://images.unsplash.com/photo-1580915411954-282cb1b0d780?auto=format&fit=crop&q=80&w=800',
-    price: '$5.49',
+    image: 'https://i1-c.pinimg.com/1200x/c3/ab/70/c3ab707fedd8ab0a89ba9d4635ea6bfe.jpg',
+    price: '₹-390',
     category: 'Classic'
   },
 ];
