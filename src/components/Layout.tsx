@@ -225,7 +225,7 @@ function FloatingCallButton() {
   return (
     <a
       href="tel:+918303319119"
-      className="fixed bottom-8 left-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl transition-all duration-500 hover:scale-110 hover:rotate-12 group translate-y-0 opacity-100"
+      className="fixed bottom-8 right-8 md:right-auto md:left-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl transition-all duration-500 hover:scale-110 hover:rotate-12 group translate-y-0 opacity-100"
       aria-label="Call us"
     >
       <div className="relative">
@@ -237,7 +237,7 @@ function FloatingCallButton() {
       </div>
       
       {/* Tooltip */}
-      <span className="absolute left-16 top-1/2 -translate-y-1/2 bg-white text-chocolate px-4 py-2 rounded-xl text-sm font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-warm-pink/10">
+      <span className="absolute right-16 md:right-auto md:left-16 top-1/2 -translate-y-1/2 bg-white text-chocolate px-4 py-2 rounded-xl text-sm font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-warm-pink/10">
         Call Now: +91 8303319119
       </span>
     </a>
